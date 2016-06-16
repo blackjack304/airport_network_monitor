@@ -1,0 +1,200 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Project Goals &mdash; Network Monitor for Apple&#39;s Airport Basestations &amp; Packet Sniffer v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="top" title="Network Monitor for Apple&#39;s Airport Basestations &amp; Packet Sniffer v1.0 documentation" href="index.html" />
+    <link rel="next" title="Prerequisites" href="prereq.html" />
+    <link rel="prev" title="Project Summary" href="summary.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="prereq.html" title="Prerequisites"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="summary.html" title="Project Summary"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Network Monitor for Apple&#39;s Airport Basestations &amp; Packet Sniffer v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="project-goals">
+<h1>Project Goals<a class="headerlink" href="#project-goals" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="goal-1-develop-packet-sniffer-application-using-python">
+<h2><em>GOAL-1:</em> <em>Develop Packet Sniffer application using Python</em><a class="headerlink" href="#goal-1-develop-packet-sniffer-application-using-python" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="original-goal">
+<h3>Original Goal<a class="headerlink" href="#original-goal" title="Permalink to this headline">¶</a></h3>
+<p>This goal will be achieved by researching and identifying an open source Python library, that will help to capture all the network packets at any particular network interface. These packets are then decoded and studies in details to analyze the behaviors of network communication at different levels.</p>
+</div>
+<div class="section" id="how-did-i-achieve-it">
+<h3>How did I achieve it?<a class="headerlink" href="#how-did-i-achieve-it" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+Yes, I achieved this goal. As suggested by instructor, I have used <em>pycap</em> library to capture packets. User Level wrapper has been developed in python. Usage and CLI arguments are provided in this documentation. As this part of the project was relatively unimportant, and completely unrelated to other two goals of my project, I spent limited amount of time to develop this Packet Sniffing application.</blockquote>
+</div>
+</div>
+<div class="section" id="goal-2-identify-and-study-the-snmp-interface-with-airport-extreme-router">
+<h2><em>GOAL-2:</em> <em>Identify and study the SNMP interface with Airport Extreme Router.</em><a class="headerlink" href="#goal-2-identify-and-study-the-snmp-interface-with-airport-extreme-router" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Original Goal<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+Researching and gaining a level of understanding of the SNMP protocol and the configuration management concepts will achieve this goal.  A proper link with Apple Airport routers via NetSNMP will be established, and various Oid supported by Airport MiB will be identified. A Python code also will be developed to query these devices and fetch the data related to network usage monitoring.</blockquote>
+</div>
+<div class="section" id="id2">
+<h3>How did I achieve it?<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+Yes, I achieved this goal. I have developed Object Oriented SNMP wrapper, and researched MiB standard specifications for Apple&#8217;s Airport class routers. Information related to Apple&#8217;s Airport Extreme Mib can be found on: <em>http://support.apple.com/kb/DL1186</em>. I was able to connect to Airport Extreme and Express routers at home, to query various network parameters via netsnmp.</blockquote>
+</div>
+</div>
+<div class="section" id="goal-3-obtain-data-and-feed-it-to-the-network-monitoring-graphing-tool">
+<h2><em>GOAL-3:</em>  <em>Obtain data and feed it to the network monitoring/graphing tool</em><a class="headerlink" href="#goal-3-obtain-data-and-feed-it-to-the-network-monitoring-graphing-tool" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>Original Goal<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+This goal will be achieved once the lower level python code is established for fetching the data from router. At this stage, this data will be presented using some Python graphing libraries or any logging/monitoring tool. If monitoring tool is used, then there will be some interfacing mechanism (‘plugin’) developed on top of previous code in Python. This data also gives an understanding and wide overview of actual network behavior and traffic statistics, which is very much insightful, as an ECE student with very less background of networking.</blockquote>
+</div>
+<div class="section" id="id4">
+<h3>How did I achieve it?<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<blockquote>
+Yes, this goal was achieved. I used <em>Munin Monitoring tool</em> to generate graphs from the parameters provided by SNMP wrapper (via python plugin scripts). Airport_Network_Monitor uses Munin (munin-monitoring.org/) tool generate graphs and monitor other parameneters related to Apple&#8217;s Airport Express/Extreme or Time Capsule Devices. The project basically consist of:</blockquote>
+<div class="line-block">
+<div class="line">1) Top Level SNMP wrapper for Airport Extreme (Airport_Monitor.py)</div>
+<div class="line">2) Several Munin plugins (written in Python) to feed the data and other graph related configuration information to Munin Plugin.</div>
+</div>
+<blockquote>
+<p>For example, &#8216;Airport_Wireless_Clients.py&#8217; is plugin script, used to feed data (and graph configuration) to Munin, for monitoring no. of clients connected to Airport Router. There are several Plugin Scripts in the Folder <em>Airport_Monitor</em>:</p>
+<blockquote>
+<div class="line-block">
+<div class="line">- Airport_Client_Error_Packets.py</div>
+<div class="line">- Airport_Client_Traffic.py</div>
+<div class="line">- Airport_Client_Signal_Strength.py</div>
+<div class="line">- Airport_Client_Noise.py</div>
+<div class="line">- Airport_DHCP_Clients.py</div>
+<div class="line">- Airport_Wireless_Clients.py</div>
+<div class="line">- Airport_Client_Rate.py</div>
+<div class="line">- Airport_WAN_Traffic.py</div>
+</div>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>All these scripts use Airport_Monitor.py to fetch SNMP data from the router, and supply this data to munin.
+Munin automatically generates graph for these scripts, if they are placed in <em>/etc/munin/plugins</em> folder.</p>
+<p>Graphs generated by Munin can be shown by Local Web Server (Apache2 or lighthttpd).</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Project Goals</a><ul>
+<li><a class="reference internal" href="#goal-1-develop-packet-sniffer-application-using-python"><em>GOAL-1:</em> <em>Develop Packet Sniffer application using Python</em></a><ul>
+<li><a class="reference internal" href="#original-goal">Original Goal</a></li>
+<li><a class="reference internal" href="#how-did-i-achieve-it">How did I achieve it?</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#goal-2-identify-and-study-the-snmp-interface-with-airport-extreme-router"><em>GOAL-2:</em> <em>Identify and study the SNMP interface with Airport Extreme Router.</em></a><ul>
+<li><a class="reference internal" href="#id1">Original Goal</a></li>
+<li><a class="reference internal" href="#id2">How did I achieve it?</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#goal-3-obtain-data-and-feed-it-to-the-network-monitoring-graphing-tool"><em>GOAL-3:</em>  <em>Obtain data and feed it to the network monitoring/graphing tool</em></a><ul>
+<li><a class="reference internal" href="#id3">Original Goal</a></li>
+<li><a class="reference internal" href="#id4">How did I achieve it?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="summary.html"
+                        title="previous chapter">Project Summary</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="prereq.html"
+                        title="next chapter">Prerequisites</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/goals.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="prereq.html" title="Prerequisites"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="summary.html" title="Project Summary"
+             >previous</a> |</li>
+        <li><a href="index.html">Network Monitor for Apple&#39;s Airport Basestations &amp; Packet Sniffer v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Niket Shah.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+    </div>
+  </body>
+</html>

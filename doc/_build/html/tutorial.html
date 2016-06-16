@@ -1,0 +1,221 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Usage Instructions &mdash; Network Monitor for Apple&#39;s Airport Basestations &amp; Packet Sniffer v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="top" title="Network Monitor for Apple&#39;s Airport Basestations &amp; Packet Sniffer v1.0 documentation" href="index.html" />
+    <link rel="next" title="Code" href="code.html" />
+    <link rel="prev" title="Prerequisites" href="prereq.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="code.html" title="Code"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="prereq.html" title="Prerequisites"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Network Monitor for Apple&#39;s Airport Basestations &amp; Packet Sniffer v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="usage-instructions">
+<h1>Usage Instructions<a class="headerlink" href="#usage-instructions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="usage-instructions-for-airport-monitor-tool">
+<h2>Usage Instructions for Airport Monitor Tool<a class="headerlink" href="#usage-instructions-for-airport-monitor-tool" title="Permalink to this headline">¶</a></h2>
+<p>If you have followed the installation instructions properly, You should be able check out Munin-generated graphs by typing: <a class="reference external" href="http://localhost">http://localhost</a> on your web browser.
+Graphs should be displayed under: Airport_Monitor:<em>Ruter Name</em> category.
+Make sure that Airport Extreme/Express BasStation&#8217;s SNMP Parametrs are:</p>
+<blockquote>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">IP</span> <span class="pre">Address:</span> <span class="pre">10.0.1.1</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">Version:</span>&nbsp;&nbsp;&nbsp; <span class="pre">2</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">Community:</span>&nbsp; <span class="pre">public</span></tt></div>
+</div>
+</blockquote>
+</div>
+<div class="section" id="usage-instructions-for-packet-sniffer-tool">
+<h2>Usage Instructions for Packet Sniffer Tool<a class="headerlink" href="#usage-instructions-for-packet-sniffer-tool" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><strong>NOTE</strong></dt>
+<dd><div class="first last line-block">
+<div class="line">No space is allowed between the option and its value.</div>
+<div class="line">Valid: &#8211;srcport=2344</div>
+<div class="line">Invalid: &#8211;srcport = 2344</div>
+</div>
+</dd>
+</dl>
+<div class="section" id="arguments">
+<h3>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h3>
+<p>Usage: <tt class="docutils literal"><span class="pre">./Packet_Sniffer.py</span> <span class="pre">--if=&lt;interface_name&gt;</span></tt>    Start capturing all packets on interface_name.</p>
+<dl class="docutils">
+<dt>Required Arguments:</dt>
+<dd><div class="first last line-block">
+<div class="line">&#8211;if=&lt;interface_name&gt;   Network Interface Name</div>
+</div>
+</dd>
+<dt>Optional Arguments:</dt>
+<dd><blockquote class="first">
+<div class="line-block">
+<div class="line">&#8211;filter=&lt;option&gt; - Filter incoming packets</div>
+<div class="line">&#8211;filter=tcp  -  Show only TCP Packets</div>
+<div class="line">&#8211;filter=udp  -  Show only UDP Packets</div>
+<div class="line">&#8211;filter=icmp  -  Show only ICMP Packets</div>
+<div class="line">&#8211;filter=arp  -  Show only ARP Packets</div>
+<div class="line">&#8211;filter=ethernet  -  Show Ethernet layer related info of all packets</div>
+</div>
+</blockquote>
+<div class="line-block">
+<div class="line">&#8211;srcport=&lt;port_no&gt; - Show packets having particualr Source Port No.</div>
+</div>
+<div class="line-block">
+<div class="line">&#8211;dstport=&lt;port_no&gt; - Show packets having particualr Destination Port No.</div>
+</div>
+<div class="line-block">
+<div class="line">&#8211;srcip=&lt;ip_addr&gt; - Show packets having particualr Source IP Address</div>
+</div>
+<div class="line-block">
+<div class="line">&#8211;dstip=&lt;ip_addr&gt; - Show packets having particualr Destination IP Address</div>
+</div>
+<div class="line-block">
+<div class="line">&#8211;prom=&lt;option&gt; - &#8216;yes&#8217;/&#8217;no&#8217; value specifying whether to put the interface into promiscuous mode.</div>
+</div>
+<div class="last line-block">
+<div class="line">&#8211;help  - Print this Info</div>
+</div>
+</dd>
+</dl>
+<p>Example Usage:
+Show all TCP packets with promiscuous mode:</p>
+<blockquote>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">./Packet_Sniffer.py</span> <span class="pre">--if=eth0</span> <span class="pre">--filter=tcp</span> <span class="pre">--prom=yes</span></tt></div>
+</div>
+</blockquote>
+<p>Show all packets sent by 192.168.0.4 :</p>
+<blockquote>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">./Packet_Sniffer.py</span> <span class="pre">--if=eth0</span> <span class="pre">--srcip=192.168.0.4</span></tt></div>
+</div>
+</blockquote>
+<p>Show all packets sent by 192.168.0.4 using port no. 5050:</p>
+<blockquote>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">./Packet_Sniffer.py</span> <span class="pre">--if=eth0</span> <span class="pre">--srcip=192.168.0.4</span> <span class="pre">--srcport=5050</span></tt></div>
+</div>
+</blockquote>
+<p>Packets are captured and corresponding data is displayed on terminal.
+This data is dumped on terminal at very high rate.
+Please enable scroll bar of your terminal in order to check all captured packets.</p>
+<blockquote>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">Press</span> <span class="pre">Ctrl^C</span> <span class="pre">to</span> <span class="pre">exit</span> <span class="pre">the</span> <span class="pre">program.</span></tt></div>
+</div>
+</blockquote>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Usage Instructions</a><ul>
+<li><a class="reference internal" href="#usage-instructions-for-airport-monitor-tool">Usage Instructions for Airport Monitor Tool</a></li>
+<li><a class="reference internal" href="#usage-instructions-for-packet-sniffer-tool">Usage Instructions for Packet Sniffer Tool</a><ul>
+<li><a class="reference internal" href="#arguments">Arguments</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="prereq.html"
+                        title="previous chapter">Prerequisites</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="code.html"
+                        title="next chapter">Code</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/tutorial.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="code.html" title="Code"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="prereq.html" title="Prerequisites"
+             >previous</a> |</li>
+        <li><a href="index.html">Network Monitor for Apple&#39;s Airport Basestations &amp; Packet Sniffer v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Niket Shah.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+    </div>
+  </body>
+</html>

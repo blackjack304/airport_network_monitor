@@ -1,0 +1,453 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Code &mdash; Network Monitor for Apple&#39;s Airport Basestations &amp; Packet Sniffer v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="top" title="Network Monitor for Apple&#39;s Airport Basestations &amp; Packet Sniffer v1.0 documentation" href="index.html" />
+    <link rel="next" title="Links" href="links.html" />
+    <link rel="prev" title="Usage Instructions" href="tutorial.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="links.html" title="Links"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tutorial.html" title="Usage Instructions"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Network Monitor for Apple&#39;s Airport Basestations &amp; Packet Sniffer v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="code">
+<h1>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="code-autodocumentation">
+<h2>Code AutoDocumentation<a class="headerlink" href="#code-autodocumentation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-Airport_Client_Error_Packets">
+<span id="airport-client-error-packets"></span><h3>Airport_Client_Error_Packets<a class="headerlink" href="#module-Airport_Client_Error_Packets" title="Permalink to this headline">¶</a></h3>
+<p>Munin plugin to monitor error packets sent/recd by wireless client&#8217;s
+connected to an Apple Airport Express/Extreme or a Time Capsule.
+Author: Niket Shah</p>
+<p>To use this plugin:
+place this python script (along with &#8216;Airport_Monitor.py&#8217;) to /etc/munin/plugins folder.</p>
+<p>this will create a virtual host in munin for the airport base station and 
+produce graphs for:
+* Error packets sent/recd by wireless client&#8217;s</p>
+</div>
+<div class="section" id="module-Airport_Monitor">
+<span id="airport-monitor"></span><h3>Airport_Monitor<a class="headerlink" href="#module-Airport_Monitor" title="Permalink to this headline">¶</a></h3>
+<p>Top Level SNMP wrapper to fetch various items of data from an Apple Airport
+Express/Extreme or a Time Capsule.</p>
+<p>To use this wrapper: place this python script (along with all other plugins) to
+/etc/munin/plugins folder.</p>
+<p>This will create a virtual host in munin for the airport named &#8216;myairport&#8217; and
+produce graphs for:</p>
+<ul class="simple">
+<li>number of connected wireless clients</li>
+<li>number of active DHCP leases</li>
+<li>rate at which clients are connected (in Mb/s)</li>
+<li>signal quality of connected clients (in dB)</li>
+<li>noise level of connected clients (in dB)</li>
+<li>Wireless client&#8217;s traffic</li>
+</ul>
+<dl class="class">
+<dt id="Airport_Monitor.Airport">
+<em class="property">class </em><tt class="descclassname">Airport_Monitor.</tt><tt class="descname">Airport</tt><big>(</big><em>ipaddress='10.0.1.1'</em>, <em>version=2</em>, <em>community='public'</em><big>)</big><a class="headerlink" href="#Airport_Monitor.Airport" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main SNMP Wrapper class for Apple Airport Base Station Devices</p>
+<dl class="method">
+<dt id="Airport_Monitor.Airport.Airport_Query">
+<tt class="descname">Airport_Query</tt><big>(</big><em>SNMP_Oid</em><big>)</big><a class="headerlink" href="#Airport_Monitor.Airport.Airport_Query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simple snmpget, will return single value as per the specified Oid</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Airport_Monitor.Airport.Get_Contact">
+<tt class="descname">Get_Contact</tt><big>(</big><big>)</big><a class="headerlink" href="#Airport_Monitor.Airport.Get_Contact" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to get contact name using SNMP</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Airport_Monitor.Airport.Get_Data">
+<tt class="descname">Get_Data</tt><big>(</big><big>)</big><a class="headerlink" href="#Airport_Monitor.Airport.Get_Data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary populated with all of the wireless clients and 
+their other parameters</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Airport_Monitor.Airport.Get_Hostname">
+<tt class="descname">Get_Hostname</tt><big>(</big><big>)</big><a class="headerlink" href="#Airport_Monitor.Airport.Get_Hostname" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to get hostname using SNMP</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Airport_Monitor.Airport.Get_InOctets">
+<tt class="descname">Get_InOctets</tt><big>(</big><em>intf</em><big>)</big><a class="headerlink" href="#Airport_Monitor.Airport.Get_InOctets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of octets of inbound traffic on particular interface.
+Accepts Legal Interface Name (as reported by Airport Interface List).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Airport_Monitor.Airport.Get_Interface_Index">
+<tt class="descname">Get_Interface_Index</tt><big>(</big><em>intfc</em><big>)</big><a class="headerlink" href="#Airport_Monitor.Airport.Get_Interface_Index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the index of the particular interface of the Airport.
+Accepts Legal Interface Name (as reported by Airport Interface List).
+To reduce SNMP traffic, it will query the Airport router for 
+Interface List, only for the first time.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Airport_Monitor.Airport.Get_NumClients">
+<tt class="descname">Get_NumClients</tt><big>(</big><big>)</big><a class="headerlink" href="#Airport_Monitor.Airport.Get_NumClients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of wireless clients connected to the Airport.
+To reduce SNMP traffic, it will query the Airport router only 
+for the first time.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Airport_Monitor.Airport.Get_NumDHCPClients">
+<tt class="descname">Get_NumDHCPClients</tt><big>(</big><big>)</big><a class="headerlink" href="#Airport_Monitor.Airport.Get_NumDHCPClients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of DHCP clients with currently active leases. 
+To reduce SNMP traffic, it will query the Airport router only 
+for the first time.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Airport_Monitor.Airport.Get_OutOctets">
+<tt class="descname">Get_OutOctets</tt><big>(</big><em>intf</em><big>)</big><a class="headerlink" href="#Airport_Monitor.Airport.Get_OutOctets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of octets of outbound traffic on particular interface.
+Accepts Legal Interface Name (as reported by Airport Interface List).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Airport_Monitor.Airport.Get_WanSpeed">
+<tt class="descname">Get_WanSpeed</tt><big>(</big><big>)</big><a class="headerlink" href="#Airport_Monitor.Airport.Get_WanSpeed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the speed of the WAN interface</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="Airport_Monitor.dbg">
+<tt class="descclassname">Airport_Monitor.</tt><tt class="descname">dbg</tt><big>(</big><em>text</em><big>)</big><a class="headerlink" href="#Airport_Monitor.dbg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print debugging log if DEBUG=1</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Airport_Monitor.tableToDict">
+<tt class="descclassname">Airport_Monitor.</tt><tt class="descname">tableToDict</tt><big>(</big><em>table</em>, <em>num</em><big>)</big><a class="headerlink" href="#Airport_Monitor.tableToDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>The netsnmp snmpwalk gives all the data related to wireless clients,
+but it is not formatted well.This function converts the snmpwalk data into
+a structured dictionary, so that we can easily index/access different 
+parameters for each client. The associated value will be a dictionary 
+containing the information available
+about the client:</p>
+<blockquote>
+<ul class="simple">
+<li>type        - 1 = sta, 2 = wds</li>
+<li>rates       - Wi-Fi Datarate supported by client interface</li>
+<li>time        - Client Up Time</li>
+<li>lastrefresh - time since the client last refreshed</li>
+<li>signal      - Wi-Fi signal strength reported by the client (or -1)</li>
+<li>noise       - dB noise level reported by the client (or -1)</li>
+<li>rate        - Mb/s Wi-Fi Datarate when client registered with Airport</li>
+<li>rx          - number of octets received by the client</li>
+<li>tx          - number of octets transmitted by the client</li>
+<li>rxerr       - number of error packets received by the client</li>
+<li>txerr       - number of error packets transmitted by the client</li>
+</ul>
+</blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="module-Airport_Client_Noise">
+<span id="airport-client-noise"></span><h3>Airport_Client_Noise<a class="headerlink" href="#module-Airport_Client_Noise" title="Permalink to this headline">¶</a></h3>
+<p>Munin plugin to monitor wireless client&#8217;s Noise Level from an Apple Airport 
+Express/Extreme or a Time Capsule.</p>
+<p>To use this plugin:
+place this python script (along with &#8216;Airport_Monitor.py&#8217;) to
+/etc/munin/plugins folder.</p>
+<p>this will create a virtual host in munin for the airport base station and 
+produce graphs for:</p>
+<ul class="simple">
+<li>noise level of connected clients (in dB)</li>
+</ul>
+</div>
+<div class="section" id="module-Airport_WAN_Traffic">
+<span id="airport-wan-traffic"></span><h3>Airport_WAN_Traffic<a class="headerlink" href="#module-Airport_WAN_Traffic" title="Permalink to this headline">¶</a></h3>
+<p>Munin plugin to monitor WAN Traffic from an Apple Airport 
+Express/Extreme or a Time Capsule.</p>
+<p>To use this plugin:
+place this python script (along with &#8216;Airport_Monitor.py&#8217;) to
+/etc/munin/plugins folder.</p>
+<p>this will create a virtual host in munin for the airport base station and 
+produce graphs for:
+* Internet Bandwidth Usage</p>
+</div>
+<div class="section" id="module-Airport_Client_Rate">
+<span id="airport-client-rate"></span><h3>Airport_Client_Rate<a class="headerlink" href="#module-Airport_Client_Rate" title="Permalink to this headline">¶</a></h3>
+<p>Munin plugin to monitor wireless client&#8217;s datarate from an Apple Airport 
+Express/Extreme or a Time Capsule.</p>
+<p>To use this plugin:
+place this python script (along with &#8216;Airport_Monitor.py&#8217;) to 
+/etc/munin/plugins folder.</p>
+<p>this will create a virtual host in munin for the airport base station and 
+produce graphs for: 
+* rate at which clients are connected (in Mb/s)</p>
+</div>
+<div class="section" id="module-Airport_Wireless_Clients">
+<span id="airport-wireless-clients"></span><h3>Airport_Wireless_Clients<a class="headerlink" href="#module-Airport_Wireless_Clients" title="Permalink to this headline">¶</a></h3>
+<p>Munin plugin to monitor number of connected wireless clients from an Apple Airport 
+Express/Extreme or a Time Capsule.</p>
+<p>To use this plugin:
+place this python script (along with &#8216;Airport_Monitor.py&#8217;) to
+/etc/munin/plugins folder.</p>
+<p>this will create a virtual host in munin for the airport base station and 
+produce graphs for:
+* number of connected wireless clients</p>
+</div>
+<div class="section" id="module-Airport_Client_Signal_Strength">
+<span id="airport-client-signal-strength"></span><h3>Airport_Client_Signal_Strength<a class="headerlink" href="#module-Airport_Client_Signal_Strength" title="Permalink to this headline">¶</a></h3>
+<p>Munin plugin to monitor signal quality of connected clients from an Apple Airport 
+Express/Extreme or a Time Capsule.</p>
+<p>To use this plugin:
+place this python script (along with &#8216;Airport_Monitor.py&#8217;) to
+/etc/munin/plugins folder.</p>
+<p>this will create a virtual host in munin for the airport base station and 
+produce graphs for:</p>
+<ul class="simple">
+<li>signal quality of connected clients (in dB)</li>
+</ul>
+</div>
+<div class="section" id="module-Airport_Client_Traffic">
+<span id="airport-client-traffic"></span><h3>Airport_Client_Traffic<a class="headerlink" href="#module-Airport_Client_Traffic" title="Permalink to this headline">¶</a></h3>
+<p>Munin plugin to monitor wireless client&#8217;s traffic stats from an Apple Airport 
+Express/Extreme or a Time Capsule.</p>
+<p>To use this plugin:
+place this python script (along with &#8216;Airport_Monitor.py&#8217;) to
+/etc/munin/plugins folder.</p>
+<p>this will create a virtual host in munin for the airport base station and 
+produce graphs for:
+* wireless client&#8217;s traffic stats</p>
+</div>
+<div class="section" id="module-Airport_DHCP_Clients">
+<span id="airport-dhcp-clients"></span><h3>Airport_DHCP_Clients<a class="headerlink" href="#module-Airport_DHCP_Clients" title="Permalink to this headline">¶</a></h3>
+<p>Munin plugin to monitor active DHCP leases from an Apple Airport 
+Express/Extreme or a Time Capsule.</p>
+<p>To use this plugin:
+place this python script (along with &#8216;Airport_Monitor.py&#8217;) to
+/etc/munin/plugins folder.</p>
+<p>this will create a virtual host in munin for the airport base station and 
+produce graphs for:
+* number of active DHCP leases</p>
+</div>
+<div class="section" id="module-Packet_Sniffer">
+<span id="packet-sniffer"></span><h3>Packet_Sniffer<a class="headerlink" href="#module-Packet_Sniffer" title="Permalink to this headline">¶</a></h3>
+<p>Python Packet Sniffer tool.
+Author: Niket Shah
+This script requires pycap (<a class="reference external" href="http://pycap.sourceforge.net/">http://pycap.sourceforge.net/</a>) and libpcap to be installed on your machine.</p>
+<p>Usage: ./Packet_Sniffer.py &#8211;if=&lt;interface_name&gt;    Start capturing all packets on interface_name.</p>
+<dl class="docutils">
+<dt>Optional Flags:</dt>
+<dd><table class="first last docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--filter=<var>&lt;option&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Filter incoming packets
+&#8211;filter=tcp    Show only TCP Packets
+&#8211;filter=udp    Show only UDP Packets
+&#8211;filter=icmp   Show only ICMP Packets
+&#8211;filter=arp    Show only ARP Packets
+&#8211;filter=ethernet   Show Ethernet layer related info of all packets</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--srcport=<var>&lt;port_no&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Show packets having particualr Source Port No.</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--dstport=<var>&lt;port_no&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Show packets having particualr Destination Port No.</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--srcip=<var>&lt;ip_addr&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Show packets having particualr Source IP Address</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--dstip=<var>&lt;ip_addr&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Show packets having particualr Destination IP Address</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--prom=<var>&lt;option&gt;</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>&#8216;yes&#8217;/&#8217;no&#8217; value specifying whether to put the interface into promiscuous mode.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--help</span></kbd></td>
+<td>Print this Info</td></tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<p>Example Usage:
+Show all TCP packets with promiscuous mode:
+./Packet_Sniffer.py &#8211;if=eth0 &#8211;filter=tcp &#8211;prom=yes</p>
+<p>Show all packets sent by 192.168.0.4 : 
+./Packet_Sniffer.py &#8211;if=eth0 &#8211;srcip=192.168.0.4</p>
+<p>Show all packets sent by 192.168.0.4 using port no. 5050:      
+./Packet_Sniffer.py &#8211;if=eth0 &#8211;srcip=192.168.0.4 &#8211;srcport=5050</p>
+<p>Packets are captured and corresponding data is displayed on terminal.
+This data is dumped on terminal at very high rate. 
+Please enable scroll bar of your terminal in order to check all captured packets. 
+Press Ctrl^C to exit the program.</p>
+<dl class="function">
+<dt id="Packet_Sniffer.Get_Options">
+<tt class="descclassname">Packet_Sniffer.</tt><tt class="descname">Get_Options</tt><big>(</big><em>myargv</em><big>)</big><a class="headerlink" href="#Packet_Sniffer.Get_Options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to parse User Arguments and options.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Packet_Sniffer.List_Interfaces">
+<tt class="descclassname">Packet_Sniffer.</tt><tt class="descname">List_Interfaces</tt><big>(</big><big>)</big><a class="headerlink" href="#Packet_Sniffer.List_Interfaces" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns list of legal names of nw interfaces in this machine.
+Credits: E A Faisal (<a class="reference external" href="http://bit.ly/azfBwy">http://bit.ly/azfBwy</a>)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Packet_Sniffer.Valid_IP">
+<tt class="descclassname">Packet_Sniffer.</tt><tt class="descname">Valid_IP</tt><big>(</big><em>IP_Addr</em><big>)</big><a class="headerlink" href="#Packet_Sniffer.Valid_IP" title="Permalink to this definition">¶</a></dt>
+<dd><p>THis function validates IP Address supplied by user</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Packet_Sniffer.Valid_MAC">
+<tt class="descclassname">Packet_Sniffer.</tt><tt class="descname">Valid_MAC</tt><big>(</big><em>mac</em><big>)</big><a class="headerlink" href="#Packet_Sniffer.Valid_MAC" title="Permalink to this definition">¶</a></dt>
+<dd><p>THis function validates MAC Address supplied by user</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Packet_Sniffer.clrscr">
+<tt class="descclassname">Packet_Sniffer.</tt><tt class="descname">clrscr</tt><big>(</big><big>)</big><a class="headerlink" href="#Packet_Sniffer.clrscr" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function clears the screen according to the OS it is on.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Packet_Sniffer.usage">
+<tt class="descclassname">Packet_Sniffer.</tt><tt class="descname">usage</tt><big>(</big><big>)</big><a class="headerlink" href="#Packet_Sniffer.usage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print some usage information about ourselves</p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Code</a><ul>
+<li><a class="reference internal" href="#code-autodocumentation">Code AutoDocumentation</a><ul>
+<li><a class="reference internal" href="#module-Airport_Client_Error_Packets">Airport_Client_Error_Packets</a></li>
+<li><a class="reference internal" href="#module-Airport_Monitor">Airport_Monitor</a></li>
+<li><a class="reference internal" href="#module-Airport_Client_Noise">Airport_Client_Noise</a></li>
+<li><a class="reference internal" href="#module-Airport_WAN_Traffic">Airport_WAN_Traffic</a></li>
+<li><a class="reference internal" href="#module-Airport_Client_Rate">Airport_Client_Rate</a></li>
+<li><a class="reference internal" href="#module-Airport_Wireless_Clients">Airport_Wireless_Clients</a></li>
+<li><a class="reference internal" href="#module-Airport_Client_Signal_Strength">Airport_Client_Signal_Strength</a></li>
+<li><a class="reference internal" href="#module-Airport_Client_Traffic">Airport_Client_Traffic</a></li>
+<li><a class="reference internal" href="#module-Airport_DHCP_Clients">Airport_DHCP_Clients</a></li>
+<li><a class="reference internal" href="#module-Packet_Sniffer">Packet_Sniffer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tutorial.html"
+                        title="previous chapter">Usage Instructions</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="links.html"
+                        title="next chapter">Links</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/code.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="links.html" title="Links"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tutorial.html" title="Usage Instructions"
+             >previous</a> |</li>
+        <li><a href="index.html">Network Monitor for Apple&#39;s Airport Basestations &amp; Packet Sniffer v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Niket Shah.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+    </div>
+  </body>
+</html>
